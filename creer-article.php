@@ -4,15 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $titre = $_POST['titre'];
   $contenu = $_POST['contenu'];
   
-  // Connexion à la base de données
-  $host = "localhost"; // remplacer par votre hôte
-  $username = "votre_nom_d_utilisateur"; // remplacer par votre nom d'utilisateur
-  $password = "votre_mot_de_passe"; // remplacer par votre mot de passe
-  $dbname = "nom_de_votre_base_de_donnees"; // remplacer par le nom de votre base de données
-  $conn = new mysqli($host, $username, $password, $dbname);
-  if ($conn->connect_error) {
-    die("La connexion a échoué: " . $conn->connect_error);
-  }
+  require_once('connectionBDD.php');
   
   // Échapper les données pour éviter les injections SQL
   $titre = $conn->real_escape_string($titre);
